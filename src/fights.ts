@@ -198,6 +198,7 @@ function embezzlerSetup() {
     if (have($item`Platinum Yendorian Express Card`) && !get("expressCardUsed")) {
       burnLibrams();
       use($item`Platinum Yendorian Express Card`);
+      meatMood(true).execute(estimatedTurns());
     }
     if (have($item`Bag o' Tricks`) && !get("_bagOTricksUsed")) {
       use($item`Bag o' Tricks`);
@@ -206,8 +207,9 @@ function embezzlerSetup() {
   if (have($item`License to Chill`) && !get("_licenseToChillUsed")) {
     burnLibrams();
     use($item`License to Chill`);
+    meatMood(true).execute(estimatedTurns());
   }
-  burnLibrams(400);
+  burnLibrams(200);
   if (
     globalOptions.ascending &&
     questStep("questM16Temple") > 0 &&
