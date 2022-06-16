@@ -190,25 +190,26 @@ const secondChainMacro = () =>
 function embezzlerSetup() {
   setLocation($location`none`);
   potionSetup(false);
+  maximize("MP", false);
   meatMood(true).execute(estimatedTurns());
   safeRestore();
   freeFightMood().execute(50);
   withStash($items`Platinum Yendorian Express Card, Bag o' Tricks`, () => {
     if (have($item`Platinum Yendorian Express Card`) && !get("expressCardUsed")) {
-      maximize("MP", false);
       burnLibrams();
       use($item`Platinum Yendorian Express Card`);
+      meatMood(true).execute(estimatedTurns());
     }
     if (have($item`Bag o' Tricks`) && !get("_bagOTricksUsed")) {
       use($item`Bag o' Tricks`);
     }
   });
   if (have($item`License to Chill`) && !get("_licenseToChillUsed")) {
-    maximize("MP", false);
     burnLibrams();
     use($item`License to Chill`);
+    meatMood(true).execute(estimatedTurns());
   }
-  burnLibrams(400);
+  burnLibrams(200);
   if (
     globalOptions.ascending &&
     questStep("questM16Temple") > 0 &&
